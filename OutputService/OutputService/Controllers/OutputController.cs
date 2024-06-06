@@ -1,4 +1,5 @@
-﻿using OutputService.Model;
+﻿using Microsoft.AspNetCore.Authorization;
+using OutputService.Model;
 using OutputService.Service;
 using OutputService.Service.Abstraction;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace OutputService.Controllers
             OutputService.GetAllGenerationRequests();
 
         [HttpPost("/retrieve")]
+        [Authorize]
         public ActionResult<OutputHttpResponseBody> RetrieveOutput(OutputHttpRequestBody requestBody)
         {
             return OutputService.GetOutput(requestBody);
